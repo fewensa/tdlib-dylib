@@ -9,5 +9,7 @@ jobs:
       name: Build td
       script:
         - sudo apt update
+        - sudo apt install -y tree
+        - go get github.com/ericchiang/pup
         - sh -f ./build.sh
 
