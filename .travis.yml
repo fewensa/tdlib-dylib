@@ -1,17 +1,29 @@
 
 language: generic
+
+
 branches:
   only:
     - build
+
+before_install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+
+
 jobs:
   include:
     - stage: Build
       name: Build td
       script:
         - sudo apt update -y
-        - sudo apt upgrade -y
-        - sudo apt dist-upgrade -y
-        - sudo updatedb && sudo ldconfig
         - gcc --version
         - sudo apt install -y tree gperf
         - go get github.com/ericchiang/pup
