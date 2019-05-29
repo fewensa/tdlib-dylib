@@ -1,0 +1,13 @@
+
+language: generic
+branches:
+  only:
+    - build
+jobs:
+  include:
+    - stage: Build
+      name: Build td
+      script:
+        - sudo apt update
+        - sh -f ./build.sh
+
