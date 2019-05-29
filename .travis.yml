@@ -8,7 +8,11 @@ jobs:
     - stage: Build
       name: Build td
       script:
-        - sudo apt update
+        - sudo apt update -y
+        - sudo apt upgrade -y
+        - sudo apt dist-upgrade -y
+        - sudo updatedb && sudo ldconfig
+        - gcc --version
         - sudo apt install -y tree gperf
         - go get github.com/ericchiang/pup
         - echo 'https://$GH_TOKEN@github.com' > ~/.git-credentials
