@@ -57,12 +57,12 @@ move_dylib() {
 main() {
   ALL_VERSION=$(echo -e $(curl https://github.com/tdlib/td/releases | pup '.release-entry .commit-title a text{}'))
 
-  rm -rf $BUILD_PATH
+  # rm -rf $BUILD_PATH
   # for V in $ALL_VERSION
   # do
   #   build $V
   # done
-  build v1.4.0
+  # build v1.4.0
 
 
 #  git clone https://github.com/tdlib/td.git $BUILD_PATH

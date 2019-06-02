@@ -3,20 +3,20 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: ~/td/build
     docker:
       - image: alpine:3.9
     steps:
-      - checkout
+      - checkout:
+          path: ~/td
       - run: apk update
       - run: apk add gcc g++ cmake make zlib-dev openssl git
-      - run: mkdir build
-      - run: cd build
       - run: pwd
       - run: ls -l && ls ../ -l
       - run: cmake -DCMAKE_BUILD_TYPE=Release ..
       - run: cmake --build .
       - store_artifacts:
-          path: build/
+          path: ~/td/build
 
 workflows:
   version: 2
