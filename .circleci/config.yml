@@ -13,16 +13,17 @@ jobs:
       - run: mkdir build && cd build
       - run: cmake -DCMAKE_BUILD_TYPE=Release ..
       - run: cmake --build .
-
+      - store_artifacts:
+        path: build/
 
 workflows:
   version: 2
   dylib-workflow:
     jobs:
       - build:
-        context: GH
-        filters:
-          branches:
-            only: build
+          context: GH
+          filters:
+            branches:
+              only: build
 
 
