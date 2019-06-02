@@ -11,11 +11,9 @@ jobs:
           path: ~/tdlib-dylib
       - run: apk update
       - run: apk add gcc g++ cmake make zlib-dev openssl git
-      - run: cd ~/td && touch a.txt && ls -la
-      - run: git clone https://github.com/tdlib/td.git ~/td
-      - run: mkdir ~/td/build
-      - run: cmake -DCMAKE_BUILD_TYPE=Release ..
-      - run: cmake --build .
+      - run: cd ~/td && git init && git remote add origin https://github.com/tdlib/td.git && git pull origin master
+      - run: cd ~/td/build && cmake -DCMAKE_BUILD_TYPE=Release ..
+      - run: cd ~/td/build && cmake --build .
       - store_artifacts:
           path: ~/td/build
 
