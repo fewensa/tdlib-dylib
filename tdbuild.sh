@@ -7,7 +7,7 @@
 SOURCE=/source
 
 apk update
-apk add gcc g++ cmake make zlib-dev openssl-dev libc-dev gperf git
+apk add gcc g++ cmake make zlib-dev openssl-dev linux-headers gperf git
 
 
 mkdir -p $SOURCE/build
