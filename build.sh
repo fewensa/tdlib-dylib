@@ -23,8 +23,8 @@ build() {
   cd $BUILD_PATH
   git checkout -b $VESION origin/$VERSION
 
-  docker run --rm -dit --name alpine -v $BUILD_PATH:/source -v ./td_build.sh:/td_build.sh alpine:3.9
-  docker exec -it alpine sh -f /td_build.sh
+  docker run --rm -dit --name alpine -v $BUILD_PATH:/source -v ./tdbuild.sh:/tdbuild.sh alpine:3.9
+  docker exec -it alpine sh -f /tdbuild.sh
 
 
 
