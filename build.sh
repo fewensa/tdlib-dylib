@@ -26,7 +26,7 @@ build() {
   docker run --rm -dit --name alpine -v $BUILD_PATH:/source -v $BIN_PATH/tdbuild.sh:/tdbuild.sh alpine:3.9
   docker exec -it alpine sh -f /tdbuild.sh
   docker stop alpine
-
+  sudo chown $USER:$USER -R $BUILD_PATH
 
   move_dylib $VERSION
 
