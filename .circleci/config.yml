@@ -8,11 +8,11 @@ jobs:
       - image: alpine:3.9
     steps:
       - checkout:
-          path: ~/td
+          path: ~/tdlib-dylib
       - run: apk update
       - run: apk add gcc g++ cmake make zlib-dev openssl git
-      - run: pwd
-      - run: ls -l && ls ../ -l
+      - run: git clone https://github.com/tdlib/td.git ~/td
+      - run: mkdir ~/td/build
       - run: cmake -DCMAKE_BUILD_TYPE=Release ..
       - run: cmake --build .
       - store_artifacts:

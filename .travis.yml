@@ -16,12 +16,14 @@ jobs:
         - docker --version
         - docker ps
         - docker images
-        - BIN_PATH=$(dirname $(readlink -f $0))
-        - docker run --rm -dit --name alpine -v $BIN_PATH:/source alpine:3.9
+        - TD_PATH=/tmp/td
+        - git clone https://github.com/tdlib/td.git $TD_PATH
+        - docker run --rm -dit --name alpine -v $TD_PATH:/source alpine:3.9
         - ALPINE="docker exec -it alpine "
         - $ALPINE apk update
         - $ALPINE apk add gcc g++ cmake make zlib-dev openssl git
-        - $ALPINE mkdir /source/build
+        - $ALPINE mkdir -p /source/build
+        - $ALPINE ls /source && ls /source/build
         - $ALPINE cd /source/build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
         - sh -f ./build.sh
 
