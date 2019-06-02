@@ -23,12 +23,12 @@ build() {
   cd $BUILD_PATH
   git checkout -b $VESION origin/$VERSION
 
-  mkdir build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
+  docker run --rm -dit --name alpine -v $BUILD_PATH:/source -v ./td_build.sh:/td_build.sh alpine:3.9
+  docker exec -it alpine sh -f /td_build.sh
 
-  move_dylib $VERSION
+
+
+  # move_dylib $VERSION
 
   cd $BIN_PATH
   rm -rf $BUILD_PATH
@@ -62,7 +62,7 @@ main() {
   # do
   #   build $V
   # done
-  # build v1.4.0
+  build v1.4.0
 
 
 #  git clone https://github.com/tdlib/td.git $BUILD_PATH
