@@ -32,6 +32,8 @@ mv $BUILD_PATH/libtdjson.so* $TARGET_PATH
 ls -la $TARGET_PATH
 
 cd $DYLIB_PATH
+git config --local user.email fewensa@protonmail.com
+git config --local user.name fewensa
 
 git add .
 git commit -m "$VERSION - $ARCH"
