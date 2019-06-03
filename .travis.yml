@@ -11,7 +11,5 @@ jobs:
         - gcc --version
         - sudo apt install -y tree gperf
         - go get github.com/ericchiang/pup
-        - echo 'https://$GH_TOKEN@github.com' > ~/.git-credentials
-        - git config --global credential.helper store
         - sh -f ./build.sh
 
