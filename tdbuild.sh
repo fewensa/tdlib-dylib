@@ -22,7 +22,7 @@ cmake --build .
 
 git clone https://github.com/fewensa/tdlib-dylib.git $DYLIB_PATH
 
-echo 'https://$GH_TOKEN@github.com' > /root/.git-credentials
+echo "https://$(echo $GH_TOKEN)@github.com" > /root/.git-credentials
 echo -e "[credential]\n    helper = store\n[core]\n    autocrlf = input\n    saftcrlf = true\n    safecrlf = true\n[user]\n    name = fewensa\n    email = fewensa@protonmail.com" > /root/.gitconfig
 
 # git config --global credential.helper store
@@ -30,8 +30,12 @@ echo -e "[credential]\n    helper = store\n[core]\n    autocrlf = input\n    saf
 
 TARGET_PATH=$DYLIB_PATH/linux/$VERSION/$ARCH
 mkdir -p $TARGET_PATH
-ls $BUILD_PATH -l
+ls $BUILD_PATH/libtdjson* -l
 cp $BUILD_PATH/libtdjson* $TARGET_PATH
+cp $BUILD_PATH/libtdjson.so /tmp
+cp $BUILD_PATH/libtdjson.so.1.4.0 /tmp
+
+ls -la /tmp
 
 ls -la $TARGET_PATH
 
