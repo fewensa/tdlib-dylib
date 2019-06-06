@@ -12,7 +12,6 @@ ARCH=$(arch)
 USER=fewensa
 REPO=tdlib-dylib
 
-mkdir -p $SOURCE_PATH
 
 build() {
   VERSION=$1
@@ -38,10 +37,6 @@ build() {
 
 main() {
   ALL_VERSION=$(echo -e $(curl https://github.com/tdlib/td/releases | pup '.release-entry .commit-title a text{}'))
-
-  git clone https://github.com/fewensa/tdlib-dylib.git $SOURCE_PATH
-  git config --local user.email fewensa@protonmail.com
-  git config --local user.name fewensa
 
   # for V in $ALL_VERSION
   # do
