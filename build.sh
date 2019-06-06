@@ -25,8 +25,8 @@ build() {
   docker run --rm -dit --name alpine \
     -v $BUILD_PATH:/source \
     -v $BIN_PATH/tdbuild.sh:/tdbuild.sh \
-    -e TG_TOKEN=$GH_TOKEN \
-    -e VERSION=$VERSION \
+    --env GH_TOKEN=$GH_TOKEN \
+    --env VERSION=$VERSION \
     alpine:3.9
   docker exec -it alpine sh -f /tdbuild.sh
   docker stop alpine
