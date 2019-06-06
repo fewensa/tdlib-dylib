@@ -35,6 +35,8 @@ cd $DYLIB_PATH
 git config --local user.email fewensa@protonmail.com
 git config --local user.name fewensa
 
+tree
+
 git add .
 git commit -m "$VERSION - $ARCH"
 git push origin master
