@@ -16,7 +16,7 @@ mkdir -p $SOURCE_PATH
 
 build() {
   VERSION=$1
-  rm -rf $BUILD_PATH
+  sudo rm -rf $BUILD_PATH
 
   git clone https://github.com/tdlib/td.git $BUILD_PATH
   cd $BUILD_PATH
@@ -32,7 +32,7 @@ build() {
   docker stop alpine
 
   cd $BIN_PATH
-  rm -rf $BUILD_PATH
+  sudo rm -rf $BUILD_PATH
 }
 
 
