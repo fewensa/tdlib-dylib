@@ -26,7 +26,7 @@ build() {
     -v $BIN_PATH/tdbuild.sh:/tdbuild.sh \
     --env GH_TOKEN=$GH_TOKEN \
     --env VERSION=$VERSION \
-    alpine:3.9
+    alpine:edge
   docker exec -it alpine sh -f /tdbuild.sh $GH_TOKEN
   docker stop alpine
 
