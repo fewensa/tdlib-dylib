@@ -4,6 +4,7 @@
 #
 
 set -v
+set -o nonomatch
 
 SOURCE=/source
 BUILD_PATH=$SOURCE/build

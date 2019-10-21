@@ -3,6 +3,8 @@
 #
 #
 
+set -v
+
 
 BIN_PATH=$(dirname $(readlink -f $0))
 BUILD_PATH=/tmp/tdlib/td
@@ -28,6 +30,11 @@ build() {
     --env VERSION=$VERSION \
     alpine:edge
   docker exec -it alpine sh -f /tdbuild.sh $GH_TOKEN
+
+  mkdir -p /tmp/ccc
+  docker cp alpine:/source/build/libtdjson* /tmp/ccc
+  ls -l /tmp/ccc
+
   docker stop alpine
 
   cd $BIN_PATH
