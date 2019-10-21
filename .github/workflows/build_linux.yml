@@ -12,8 +12,8 @@ jobs:
 
     steps:
     - name: Update system
-      run: apt update -y
+      run: sudo apt update -y
     - name: Install dependencies
-      run: apt install -y tree gperf
+      run: sudo apt install -y tree gperf
     - name: Do build
       run: sh -f build_github.sh
