@@ -16,4 +16,6 @@ jobs:
     - name: Install dependencies
       run: sudo apt install -y tree gperf
     - name: Do build
-      run: pwd
+      run: |
+        pwd
+        ls -l
