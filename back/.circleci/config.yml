@@ -1,0 +1,30 @@
+version: 2.1
+
+
+jobs:
+  build:
+    working_directory: ~/td/build
+    docker:
+      - image: alpine:3.9
+    steps:
+      - checkout:
+          path: ~/tdlib-dylib
+      - run: apk update
+      - run: apk add gcc g++ cmake make zlib-dev openssl-dev linux-headers gperf git
+      - run: cd ~/td && git init && git remote add origin https://github.com/tdlib/td.git && git pull origin master
+      - run: cd ~/td/build && cmake -DCMAKE_BUILD_TYPE=Release ..
+      - run: cd ~/td/build && cmake --build .
+      - store_artifacts:
+          path: ~/td/build
+
+workflows:
+  version: 2
+  dylib-workflow:
+    jobs:
+      - build:
+          context: GH
+          filters:
+            branches:
+              only: build
+
+
