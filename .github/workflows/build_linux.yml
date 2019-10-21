@@ -16,6 +16,4 @@ jobs:
     - name: Install dependencies
       run: sudo apt install -y tree gperf
     - name: Do build
-      run: |
-        pwd
-        sh -f build_github.sh
+      run: pwd
