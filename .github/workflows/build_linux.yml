@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt install -y tree gperf
     - name: Checkout
-      uses: actions/checkout@build
+      uses: actions/checkout@master
     - name: Do build
       run: |
         pwd
