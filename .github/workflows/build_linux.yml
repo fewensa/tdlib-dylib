@@ -17,9 +17,7 @@ jobs:
       run: sudo apt install -y tree gperf
     - name: Checkout
       uses: actions/checkout@master
+    - name: Install pup
+      run: go get github.com/ericchiang/pup
     - name: Do build
-      run: |
-        pwd
-        ls -l
-        ls -l ../
-        ls -l ../../
+      run: sh -f build_github.sh
