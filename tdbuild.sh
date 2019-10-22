@@ -53,13 +53,10 @@ ls -la $TARGET_PATH
 
 cd $DYLIB_PATH
 
-cat ~/.gitconfig
-echo '----'
-cat ~/.git-credentials
-tree
+tree /tmp
 
-git add .
-git commit -m "$VERSION - $ARCH"
-git push origin master
+# git add .
+# git commit -m "$VERSION - $ARCH"
+# git push origin master
 
 
