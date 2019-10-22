@@ -1,0 +1,1 @@
+bcac324abd792c1a61bedfe17cca19417443f070a65d1dad93877772dc1a64cd /tmp/tdlib-dylib/linux/v1.4.0/x86_64/libtdjson.so
