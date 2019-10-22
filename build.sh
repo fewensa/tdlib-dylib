@@ -45,6 +45,7 @@ main() {
   for V in $ALL_VERSION
   do
     echo build $V
+    build $V
   done
   # build v1.4.0
 
