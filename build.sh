@@ -31,11 +31,8 @@ build() {
     alpine:edge
   docker exec -it alpine sh -f /tdbuild.sh $GH_TOKEN
 
-  mkdir -p /tmp/ccc
-  docker cp alpine:/source/build/libtdjson* /tmp/ccc
-  ls -l /tmp/ccc
-
   docker stop alpine
+  docker rm alpine
 
   cd $BIN_PATH
   sudo rm -rf $BUILD_PATH
@@ -45,11 +42,11 @@ build() {
 main() {
   ALL_VERSION=$(echo -e $(curl https://github.com/tdlib/td/releases | pup '.release-entry .commit-title a text{}'))
 
-  # for V in $ALL_VERSION
-  # do
-  #   build $V
-  # done
-  build v1.4.0
+  for V in $ALL_VERSION
+  do
+    build $V
+  done
+  # build v1.4.0
 
 
 }
