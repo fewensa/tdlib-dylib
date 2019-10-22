@@ -36,13 +36,11 @@ mkdir -p $TARGET_PATH
 
 # cp $BUILD_PATH/libtdjson.so $TARGET_PATH
 # cp $BUILD_PATH/libtdjson.so.$VERSION $TARGET_PATH
-cp $BUILD_PATH/*so* $TARGET_PATH
+cp -d $BUILD_PATH/*so* $TARGET_PATH
 
 ls -la $TARGET_PATH
 
 cd $DYLIB_PATH
-
-tree /tmp
 
 git add .
 git commit -m "$VERSION - $ARCH"
