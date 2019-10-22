@@ -4,7 +4,6 @@
 #
 
 set -v
-set -o nonomatch
 
 SOURCE=/source
 BUILD_PATH=$SOURCE/build
@@ -35,19 +34,8 @@ git config --global user.name fewensa
 TARGET_PATH=$DYLIB_PATH/linux/$VERSION/$ARCH
 mkdir -p $TARGET_PATH
 
-ls $BUILD_PATH -l
-
-ls $BUILD_PATH/libtdjson* -l
-
-cp $BUILD_PATH/libtdjson* $TARGET_PATH
-
-cp $BUILD_PATH/libtdjson* /tmp
-
-cp $BUILD_PATH/libtdjson.so /tmp
-
-cp $BUILD_PATH/libtdjson.so.1.4.0 /tmp
-
-ls -la /tmp
+cp $BUILD_PATH/libtdjson.so $TARGET_PATH
+cp $BUILD_PATH/libtdjson.so.$VERSION $TARGET_PATH
 
 ls -la $TARGET_PATH
 
@@ -55,8 +43,8 @@ cd $DYLIB_PATH
 
 tree /tmp
 
-# git add .
-# git commit -m "$VERSION - $ARCH"
-# git push origin master
+git add .
+git commit -m "$VERSION - $ARCH"
+git push origin master
 
 
