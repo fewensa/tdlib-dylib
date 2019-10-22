@@ -19,7 +19,7 @@ apk add gcc g++ cmake make zlib-dev openssl-dev linux-headers gperf git tree
 mkdir -p $BUILD_PATH
 cd $BUILD_PATH
 cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build .
+cmake --build . --target prepare_cross_compiling
 
 git clone https://github.com/fewensa/tdlib-dylib.git $DYLIB_PATH
 
@@ -43,8 +43,12 @@ SO_VERSION_FILE=libtdjson.so.${VERSION:1}
 cp -d $BUILD_PATH/$SO_FILE $TARGET_PATH
 cp -d $BUILD_PATH/$SO_VERSION_FILE $TARGET_PATH
 
-echo $(sha256sum $SO_FILE) > $TARGET_PATH/$SO_FILE.sha256.txt
-echo $(sha256sum $SO_VERSION_FILE) > $TARGET_PATH/$SO_VERSION_FILE.sha256.txt
+if [ ! -f "$TARGET_PATH/$SO_FILE" ]; then
+  echo $(sha256sum $TARGET_PATH/$SO_FILE) > $TARGET_PATH/$SO_FILE.sha256.txt
+fi
+if [ ! -f "$TARGET_PATH/$SO_VERSION_FILE" ]; then
+  echo $(sha256sum $TARGET_PATH/$SO_VERSION_FILE) > $TARGET_PATH/$SO_VERSION_FILE.sha256.txt
+fi
 
 
 ls -la $TARGET_PATH

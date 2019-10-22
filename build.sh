@@ -44,8 +44,10 @@ main() {
 
   for V in $ALL_VERSION
   do
-    echo build $V
-    # build $V
+    if [[ $HOST == node* ]]; then
+      echo build $V
+      # build $V
+    fi
   done
   # build v1.4.0
 
