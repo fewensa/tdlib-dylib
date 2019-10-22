@@ -19,7 +19,8 @@ apk add gcc g++ cmake make zlib-dev openssl-dev linux-headers gperf git tree
 mkdir -p $BUILD_PATH
 cd $BUILD_PATH
 cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --target prepare_cross_compiling
+cmake --build .
+# cmake --build . --target prepare_cross_compiling
 
 git clone https://github.com/fewensa/tdlib-dylib.git $DYLIB_PATH
 
