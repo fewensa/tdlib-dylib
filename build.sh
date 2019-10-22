@@ -21,7 +21,7 @@ build() {
 
   git clone https://github.com/tdlib/td.git $BUILD_PATH
   cd $BUILD_PATH
-  git checkout -b $VERSION
+  git checkout tags/$VERSION -b $VERSION
 
   docker run --rm -dit --name alpine \
     -v $BUILD_PATH:/source \
