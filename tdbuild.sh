@@ -43,10 +43,10 @@ SO_VERSION_FILE=libtdjson.so.${VERSION:1}
 cp -d $BUILD_PATH/$SO_FILE $TARGET_PATH
 cp -d $BUILD_PATH/$SO_VERSION_FILE $TARGET_PATH
 
-if [ ! -f "$TARGET_PATH/$SO_FILE" ]; then
+if [ -f "$TARGET_PATH/$SO_FILE" ]; then
   echo $(sha256sum $TARGET_PATH/$SO_FILE) > $TARGET_PATH/$SO_FILE.sha256.txt
 fi
-if [ ! -f "$TARGET_PATH/$SO_VERSION_FILE" ]; then
+if [ -f "$TARGET_PATH/$SO_VERSION_FILE" ]; then
   echo $(sha256sum $TARGET_PATH/$SO_VERSION_FILE) > $TARGET_PATH/$SO_VERSION_FILE.sha256.txt
 fi
 
