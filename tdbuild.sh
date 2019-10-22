@@ -37,6 +37,8 @@ mkdir -p $TARGET_PATH
 # fixme: it's error, will print Directory not found.
 # cp -d $BUILD_PATH/*so* $TARGET_PATH
 
+echo ======================> $VERSION
+ls $BUILD_PATH/
 
 SO_FILE=libtdjson.so
 SO_VERSION_FILE=libtdjson.so.${VERSION:1}
