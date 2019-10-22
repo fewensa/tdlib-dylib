@@ -34,9 +34,18 @@ git config --global user.name fewensa
 TARGET_PATH=$DYLIB_PATH/linux/$VERSION/$ARCH
 mkdir -p $TARGET_PATH
 
-cp -d $BUILD_PATH/libtdjson.so $TARGET_PATH
-cp -d $BUILD_PATH/libtdjson.so.${VERSION:1} $TARGET_PATH
+# fixme: it's error, will print Directory not found.
 # cp -d $BUILD_PATH/*so* $TARGET_PATH
+
+
+SO_FILE=$BUILD_PATH/libtdjson.so
+SO_VERSION_FILE=$BUILD_PATH/libtdjson.so.${VERSION:1}
+cp -d $SO_FILE $TARGET_PATH
+cp -d $SO_VERSION_FILE $TARGET_PATH
+
+echo $(sha256sum $SO_FILE) > $TARGET_PATH/$SO_FILE.sha256.txt
+echo $(sha256sum $SO_VERSION_FILE) > $TARGET_PATH/$SO_VERSION_FILE.sha256.txt
+
 
 ls -la $TARGET_PATH
 
