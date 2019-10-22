@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - build
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Update system
+      run: sudo apt update -y
+
+    - name: Install dependencies
+      run: sudo apt install -y tree gperf
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Set up Go
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.12
+
+    - name: Install pup
+      run: go get github.com/ericchiang/pup
+
+    - name: Do build
+      run: sh -f build_github.sh
