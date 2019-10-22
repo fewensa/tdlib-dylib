@@ -40,14 +40,11 @@ build() {
 
 
 main() {
-  ALL_VERSION=$(echo -e $(curl https://github.com/tdlib/td/releases | pup '.release-entry .commit-title a text{}'))
+  ALL_VERSION=$(echo $(curl https://github.com/tdlib/td/releases | pup '.release-entry .commit-title a text{}'))
 
   for V in $ALL_VERSION
   do
-    if [ ${V:0:1} == v ]; then
-      echo build $V
-      # build $V
-    fi
+    echo build $V
   done
   # build v1.4.0
 
