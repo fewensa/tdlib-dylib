@@ -34,8 +34,9 @@ git config --global user.name fewensa
 TARGET_PATH=$DYLIB_PATH/linux/$VERSION/$ARCH
 mkdir -p $TARGET_PATH
 
-cp $BUILD_PATH/libtdjson.so $TARGET_PATH
-cp $BUILD_PATH/libtdjson.so.$VERSION $TARGET_PATH
+# cp $BUILD_PATH/libtdjson.so $TARGET_PATH
+# cp $BUILD_PATH/libtdjson.so.$VERSION $TARGET_PATH
+cp $BUILD_PATH/*so* $TARGET_PATH
 
 ls -la $TARGET_PATH
 
